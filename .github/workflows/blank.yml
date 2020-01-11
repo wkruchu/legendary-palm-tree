@@ -1,0 +1,44 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+package Main;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int x = in.nextInt();
+		in.close();
+		
+		int a;int count=0;int b;
+		for(int i=1;i<=n;i++) {
+			b=i;
+		while(b!=0) {
+			a=b%10;
+			if(a==x) { 
+				count++;
+			}
+			b=b/10;
+		}
+		}
+		System.out.println(count);   
+	}
+	
+}     
