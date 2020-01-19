@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+	
+		Scanner in = new Scanner(System.in);
+	    int n = in.nextInt();
+	   
+	    int a[] = new int [100];
+	    for(int i= 0;i<n;i++) {
+	    	a[i] = in.nextInt();
+	    }
+	    for(int i= 0;i<n;i++) {
+	    	 int count=0;               //count  需要是局部变量，计算开始需要清零，否则会累加
+	    	for(int k=i-1;k>=0;k--) {
+	    		if(a[i]>a[k]) 
+	    	       count++;
+	     }
+	    	System.out.print(count+" ");
+	    }
+}
+}
