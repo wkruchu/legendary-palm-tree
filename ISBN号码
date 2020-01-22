@@ -1,0 +1,49 @@
+package D21ISBN号码;
+
+import java.util.Scanner;
+ /*
+    * 注意审题，有坑  --50分
+  * 余数为10，识别码为X不仅要判断他给出的是不是是X判断是否正确，解决--80分
+  * 还要给出解决方案，当余数为10，给的识别码不是X时，要给出正确的+X的识别码！解决--100分
+  */
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner (System.in);
+		String  str =in.next();
+		char a[]=str.toCharArray();   //将字符串转换为字符型数组
+		int b[] = new int[10];
+		int j=0,sum=0;
+		for(int i=0;i<str.length();i++) {
+			if(a[i]!='-') {
+				b[j]=a[i]-'0';  //ASCII码 字符类型转换为整型  char ‘0’ = int 48 
+				j++;            
+			}
+		}
+		
+		for(int i=0;i<9;i++) {
+			sum=sum+b[i]*(i+1);
+		}
+		
+		if(sum%11==10) {
+			if(b[9]==40) {
+				System.out.println("Right");
+			}
+			else {
+				System.out.println(str.substring(0, str.length()-1)+'X');
+				//求子字符串，(x,y)从x--y,字符串首位为0，长度为y-x
+			}
+		}
+		
+		else{
+			if(sum%11==b[9]) {
+		    	System.out.println("Right");
+		    }
+		    
+		    else {
+		    	System.out.println(str.substring(0, str.length()-1)+sum%11);
+		    }
+		}
+		
+	}      
+}
