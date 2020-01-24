@@ -1,0 +1,79 @@
+package D24查单词;
+
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner (System.in);
+		String str =in.nextLine();
+		String str1 = in.nextLine();
+		
+		str = str.toLowerCase();
+		str1 = str1.toLowerCase();
+		int count=0;int first = 0;
+		
+		String b[]=str1.split(" ");   //将字符串str1按空格拆分开
+		                             //split() 方法根据匹配给定的正则表达式来拆分字符串
+		                             //每一部分为字符串数组的每个元素
+		                             //代替以下的繁琐代码
+		
+		/*     int sum=1;
+		char a[]=str1.toCharArray();
+		for(int i=0;i<a.length;i++) {
+			if(a[i]==' ') 
+				sum++;              //确定多少个空格，确定开数组的长度
+		}
+		String b[] = new String[sum];
+		int j=0; b[j]="";
+        for(int i=0;i<a.length;i++) {
+			
+			if(a[i]!=' ') {
+				b[j]=b[j]+a[i];
+			}
+			else {
+				j++;
+				b[j]="";  
+				                   //   a[j]=""和b[j]=null;
+	                               //eg: a[j]+abc=abc; 
+	                               //    b[j]+abc=nullabc;
+	       
+	        console.log(null==undefined)//true
+            console.log(null===undefined)//false
+	   观察可以发现：null和undefined 两者相等，但是当两者做全等比较时，两者又不等。
+         原因：null： Null类型，代表“空值”，代表一个空对象指针，使用typeof运算得到 “object”，
+        所以你可以认为它是一个特殊的对象值。
+    undefined： Undefined类型，当一个声明了一个变量未初始化时，得到的就是undefined。
+        实际上，undefined值是派生自null值的，ECMAScript标准规定对二者进行相等性测试要返回true，
+        null表示"没有对象"，即该处不应该有值。
+        undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。
+			}	
+		}*/
+    
+        for(int i=0;i<b.length;i++) {
+	    	if(b[i].equals(str)) {   //判断字符串相等，1:a.equals(b);判断a和b内容是否相等
+	    		                  //2：a==b; 操作符比较两个对象时， 比较的是两个对象的内存地址，
+	    		                 //所以它们不相等 （即使内容相同， 不同对象的内存地址也是不相同的）
+	    		count++;
+	    	} 	
+	    }
+
+	    if(count==0) {
+	    	System.out.println(-1);
+	    }
+	    else {
+	    	if(b[0].equals(str)) {
+	    		 first=0;          
+	    	}
+	    	else{
+	    	 first =str1.indexOf(' '+str+' ')+1; //确定这个字符串是单独的单词
+	    	       //排除这种情况：
+	    	     //po
+	    	     //popi jhu ufdn ndh dn po nja
+	    	     //如果str前后不加空格 可能误认为是popi
+	    	}
+	    	System.out.println(count+" "+first);
+	    }
+	}
+}
